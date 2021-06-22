@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=East+Sea+Dokdo&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'East Sea Dokdo', sans-serif;
+}
+
+section {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+section .imgBx {
+    padding: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url(https://wallpaperaccess.com/full/1109225.jpg);
+    background-size: 110%;  
+    background-position: calc(var(--x)/-20) calc(var(--y)/-20);
+    transition: all 0.75s ease-out;
+
+}
+/* sjfgaskujfgaskujfgaskujfgaskujfgaskujfgaskujfgaskujfgaskujfgaskujfgaskujfgaskujfgaskujfgaskujfgaskujfgaskujfgaskujfgaskujfgaskujfgaskujfgaskujfgaskujfgaskujfgasku */
+section .box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(12px);
+}
+
+ section .box.box2 {
+    background: url(https://wallpaperaccess.com/full/1109225.jpg);
+    background-size: 110%;  
+    background-position: calc(var(--x)/-20) calc(var(--y)/-20);
+    clip-path: circle(250px at center);
+    transition: all 0.75s ease-out;
+ }
+
+ section .box.box2::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    height: 500px;
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.25);
+    z-index: 10;
+    border-radius: 50%;
+ }
+
+ .text {
+    position: absolute;
+    margin-top: 15%;
+    margin-left: 20%;
+    color: white;
+    font-size: 15em;
+    transform: translateX(calc(var(--x)/-5)) translateY(calc(var(--y)/-5));
+    transition: all 0.75s ease-out;
+ }
+
+
+section:before {
+    --x: 585px;
+    --y: 370px;
+    position: --x --y;
+}

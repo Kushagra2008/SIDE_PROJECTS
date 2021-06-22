@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <section>
+        <div class="imgBx">
+            <h2 class="text">HarryStyles</h2>
+        </div>
+        <div class="box box1"></div>
+        <div class="box box2">
+            <h2 class="text">Styles</h2>
+        </div>
+    </section>
+    <script>
+        const pos = document.documentElement;
+        const text = document.querySelector('.box.box2.text')
+        pos.addEventListener('mousemove', (e) => {
+            pos.style.setProperty('--x', e.clientX + "px");
+            pos.style.setProperty('--y', e.clientY + "px");
+        })
+        pos.addEventListener("mouseout", (e) => {
+            pos.style.setProperty('--x',585 + "px");
+            pos.style.setProperty('--y', 370 + "px");
+        });
+    </script>
+    <script>
+        const timeElapsed = Date.now();
+        const today = new Date(timeElapsed)
+       date = today.toDateString()
+       console.log(timeElapsed)
+    </script>
+</body>
+</html>
