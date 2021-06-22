@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+*   {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    cursor: url(images/cursor.svg) 0 0, move;
+    user-select: none;
+}
+
+body    {
+    background: url(images/bg.jpg);
+    background-size: cover;
+    overflow: hidden;
+    background-repeat: no-repeat;
+}
+
+.make-topbar-come-down  {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 40px;
+}
+
+.topbar {
+    display: flex;
+    transition: all 0.3s;
+    position: absolute;
+    top: -44px;
+    left: 0;
+    width: 100%;
+    height: 44px;
+    background: rgba(250, 250, 250, 0.3);
+    align-items: center;
+    color: white;
+}
+
+.make-topbar-come-down:hover  .topbar  {
+    top: 0px;
+}
+
+.topbar span    {
+    margin-left: 15px;
+    font-size: 18px;
+    font-weight: 400;
+    /* cursor: url(images/pointinghand.svg) 0 0, move; */
+}
+ 
+.topbar span:nth-child(2)   {
+    font-weight: 500;
+}
+
+.topbar span:nth-child(1)   {
+    font-size: 22px;
+    margin-right: 12px;
+    margin-left: 30px;
+}
+
+.dock-container {
+    position: fixed;
+    bottom: 0;
+    text-align: center;
+    right: 17.5%;
+    width: 65%;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px 10px 0 0;
+}
+
+.dock-container li  {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    margin-left: 5px;
+    list-style-type: none;
+    display: inline-block;
+    position: relative;
+}
+
+.dock-container li img {
+    width: 64px;
+    height: 74px;
+    transition: all 0.4s;
+    transform-origin: 50% 100%;
+}
+
+
+.dock-container li:hover img { 
+    transform: scale(2);
+    margin: 0 2em;
+}
+
+.dock-container li:hover + li img  {
+    transform: scale(1.5);
+    margin: 0 1.5em;
+}
+
+.dock-container li:nth-child(1)  {
+    margin-left: 0px;
+}
+
+.dock-container .opened  {
+    content: '';
+    background: green;
+    position: absolute;
+}
+/* 
+.dock-container li:hover  {
+    margin-left: 0px;
+} */
+/* 
+.dock   {
+    background: black;
+} */
+
+/* .dock:hover ul li img{
+    margin: 0 1.5em;
+} */
