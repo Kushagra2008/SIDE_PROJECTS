@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+*   {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+#loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #001d10;
+    animation: animateBackground 10s linear infinite;
+}
+
+.loading    {
+    position: relative;
+    width: 250px;
+    height: 250px;
+}
+
+.loading .blocks    {
+    position: absolute;
+    width: 8px;
+    height: 25px;
+    border-radius: 8px;
+    background-color: #050c09;
+    left: 50%;
+    transform: rotate(calc(18deg * var(--i)));
+    transform-origin: 0 125px;
+    animation: animate 1.9s ease-in-out infinite;
+    animation-delay: calc(var(--i) * 0.05s);
+}
+
+h3  {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);  
+  font-size: 2em;
+  color: wheat;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  animation: animateText 2s ease-in-out infinite;
+  animation-delay: -1s;
+}
+
+
+/* ---ANIMATIONS--- */
+@keyframes animateBackground    {
+    0%  {
+        filter: hue-rotate(0deg);
+    }
+    100%    {
+        filter: hue-rotate(360deg);
+    }
+}
+
+@keyframes animate  {
+    0%, 50% {
+        background: #050c09;
+        box-shadow: none;
+    }
+
+    50.1%, 100%    {
+        background: #0f0;
+        box-shadow: 0 0 5px #0f0,
+                    0 0 15px #0f0,
+                    0 0 30px #0f0,
+                    0 0 60px #0f0,
+                    0 0 90px #0f0,
+    }
+}
+
+@keyframes animateText  {
+    0%, 50% {
+        color: #050c09;
+        text-shadow: none;
+    }
+
+    50.1%, 100%    {
+        color: #0f0;
+        text-shadow: 0 0 5px #0f0;
+    }
+}
