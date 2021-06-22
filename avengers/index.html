@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+</head>
+<body>
+    <div class="card">
+        <div class="content">
+            <h2>Captain Marvel</h2>
+            <p> Carol Danvers </p>
+            <a href="#"> Read More </a>
+        </div>
+        <img src="captain marvel.png" alt="">
+    </div>
+
+    <div class="card">
+        <div class="content">
+            <h2>Captain America</h2>
+            <p> The First Avenger </p>
+            <a href="#"> Read More </a>
+        </div>
+        <img src="captain america.png" alt="">
+    </div>
+
+    <div class="card">
+        <div class="content">
+            <h2>Thor</h2>
+            <p> The God Of Thunder </p>
+            <a href="#"> Read More </a>
+        </div>
+        <img src="thor.png" alt="">
+    </div>
+
+    <div class="card">
+        <div class="content">
+            <h2>Hulk</h2>
+            <p> The Green Monster </p>
+            <a href="#"> Read More </a>
+        </div>
+        <img src="hulk.png" alt="">
+    </div>
+
+
+    <script>
+        const card = document.querySelectorAll(".card")
+        let a = (($(window).width()) / 2) - 300;
+        
+        for (let cards of card) cards.setAttribute("style", `margin-left: ${a}px; margin-right: ${a}px;`);
+    </script>
+    
+</body>
+</html>
