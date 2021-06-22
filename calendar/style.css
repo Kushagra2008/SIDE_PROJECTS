@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+*   {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+#banner {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #161623;
+    overflow: hidden;
+}
+
+#banner::before {
+    content: "";
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background: linear-gradient(#ffc107, #e91e63);
+    border-radius: 50%;
+    transform: translate(-300px, -120px);
+}
+
+#banner::after {
+    content: "";
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    background: linear-gradient(#2196f3, #31ff38);
+    border-radius: 50%;
+    transform: translate(300px, 120px);
+}
+
+.box    {
+    position: relative;
+    z-index: 1000;
+}
+
+.container {    
+    position: relative;
+    width: 400px;
+    min-height: 400px;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 25px 45px rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    backdrop-filter: blur(25px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#dycalendar {
+    width: 100%;
+    padding: 20px;
+}
+
+#dycalendar table {
+    width: 100%;
+    margin-top: 80px;
+    border-spacing: 5px;
+}
+
+#dycalendar table td {
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+#dycalendar table td:hover {
+    background: #fff !important;
+    color: black !important;
+}
+
+#dycalendar table tr:nth-child(1) td {
+    background-color: white;
+    color: #111;
+    border-radius: 4px;
+    /* font-weight: 600; */
+}
+
+.dycalendar-month-container .dycalendar-today-date,
+.dycalendar-month-container .dycalendar-target-date     {
+    background: #fff !important;
+    color: black !important;
+}
+
+.dycalendar-month-container .dycalendar-header .dycalendar-prev-next-btn.prev-btn,
+.dycalendar-month-container .dycalendar-header .dycalendar-prev-next-btn.next-btn
+{
+    background: #fff;
+    color: #111;
+    width: 44px;
+    height: 38px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-weight: 300;
+}
+
+.dycalendar-month-container .dycalendar-span-month-year {
+    color: white;
+    font-size: 1.5em;
+    font-weight: 600;
+}
