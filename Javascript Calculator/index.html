@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Calculator</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="prequisites/calculator.png" type="image/png" sizes="16x16 32x32">
+
+    <script type="text/javascript" src="prequisites/vanilla.js"></script>
+    <script src="prequisites/keypress.js"></script>
+</head>
+
+<body>
+
+    <audio src="prequisites/tick.mp3" id="audio"></audio>
+    <div class="container">
+        <form name="calc" class="calculator">
+            <input type="text" readonly class="value" name="txt"/>
+            <span class="num clear" onclick="calc.txt.value = ''">C</span>
+            <span class="num">/</span>
+            <span class="num">×</span>
+            <span class="num">7</span>
+            <span class="num">8</span>
+            <span class="num">9</span>
+            <span class="num">-</span>
+            <span class="num">4</span>
+            <span class="num">5</span>
+            <span class="num">6</span>
+            <span class="num plus">+</span>
+            <span class="num">1</span>
+            <span class="num">2</span>
+            <span class="num">3</span>
+            <span class="num">0</span>
+            <span class="num">00</span>
+            <span class="num">.</span>
+            <span class="num equal">=</span>
+        </form>
+    </div>
+
+    <script type="text/javascript">
+        mobile = false;
+        console.log(window.innerWidth);
+
+        if (window.innerWidth <= 480)   {
+            mobile = true;
+        }
+    
+        function checkNoError()   {
+            if (document.calc.txt.value != 'Syntax Error')  return true;
+            return false;
+        }
+
+        function equals()   {
+            let textVal = (document.calc.txt.value).replace(/×/g, '*'); 
+            let answer;
+            try {
+                answer = eval(textVal);
+                if (answer == undefined)    {
+                    throw "no"
+                }
+            }
+            catch   {
+                answer = "Syntax Error";
+            }
+            document.calc.txt.value = answer;
+            value.scrollTo(value.scrollWidth, 0);
+            checkNoError() ? value.select() : {};
+            return;
+        }
+
+        function normal(addVal) {
+            if (checkNoError()) {
+                document.calc.txt.value += `${addVal}`;
+            } else {
+                document.calc.txt.value = `${addVal}`;
+            }
+        }
+
+        const audio = document.querySelector("#audio");
+        const spans = document.querySelectorAll(".num");
+        const container = document.querySelector(".container");
+        const value = document.querySelector(".value");
+
+        for (let x of spans)    {
+            x.addEventListener('click', e => {
+                audio.play();
+                if (x.innerText == "C") {
+                    document.calc.txt.value = "";
+                    return;
+                }
+                if (x.innerText == "=") {
+                    equals();
+                    return;
+                }
+                normal(x.innerText);
+                
+                x.innerText == "00" ? value.scrollLeft += 50 : value.scrollLeft += 25;
+            });
+        }
+
+        if (!(mobile))  {
+            // Tilt for Calculator On Mouse Move
+            VanillaTilt.init(container, {
+                max: 5,
+                speed: 400,
+                glare: false,
+                "max-glare": 0.2
+            });
+
+            const listener = new window.keypress.Listener();
+
+            // multiplty
+            listener.simple_combo("*", function() {
+                audio.play();
+                normal('×');
+                value.scrollLeft += 25;
+            });
+
+            // add
+            listener.simple_combo("+", () => {
+                audio.play();
+                normal('+');
+                value.scrollLeft += 25;
+            });
+
+            // divide
+            listener.simple_combo("/", () => {
+                audio.play();
+                normal('/');
+                value.scrollLeft += 25;
+            });
+
+            //subtract 
+            listener.simple_combo("-", () => {
+                audio.play();
+                normal('-');
+                value.scrollLeft += 25;
+            });
+
+            // backspace
+            listener.simple_combo("backspace", e => {
+                audio.play();
+                checkNoError() ? document.calc.txt.value = document.calc.txt.value.slice(0, -1) : document.calc.txt.value = "";
+                value.scrollLeft += 25;
+            });
+
+            // double zeros
+            listener.simple_combo("ctrl 0", e => {
+                audio.play();
+                normal("00");
+                value.scrollLeft += 50; 
+            });
+
+            addEventListener("keydown", (e) => {
+                if (e.keyCode < 58 && e.keyCode > 47 && !(e.shiftKey || e.ctrlKey) || e.key == ".")   {
+                    normal(e.key);
+                    value.scrollLeft += 25;
+                    audio.play();
+                    return;
+                }
+
+                if (e.key == "Enter" || e.key == "=")   {
+                    equals();
+                    audio.play();
+                    return;
+                }
+                
+                if (e.key == "c" || e.key == "C")    {
+                    document.calc.txt.value = "";
+                    audio.play();
+                    return;
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>
